@@ -1,15 +1,16 @@
 {
   "name": "react-nest-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "一个脚手架工具，用于快速生成 react+nest 项目",
   "type": "module",
   "bin": {
-    "react-nest": "./dist/index.js"
+    "react-nest": "./packages/cli/dist/index.js"
   },
-  "main": "./dist/index.js",
+  "main": "./packages/cli/dist/index.js",
   "scripts": {
     "build": "tsup",
-    "start": "ts-node ./packages/cli/src/index.ts"
+    "start": "ts-node ./packages/cli/src/index.ts",
+    "preview": "tsup && node ./packages/cli/dist/index.js"
   },
   "keywords": [
     "react",

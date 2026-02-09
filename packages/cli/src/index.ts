@@ -19,8 +19,10 @@ const logInfo = () => {
     consola.info(picocolors.yellow(program.version()))
 }
 
-const packageJson = JSON.parse(fsExtra.readFileSync(path.resolve(import.meta.dirname, '../../../package.json'), 'utf-8'));
+const packageJsonPath = path.resolve(import.meta.dirname, '../../../package.json');
+const packageJson = JSON.parse(fsExtra.readFileSync(packageJsonPath, 'utf-8'));
 
+console.log(packageJsonPath, packageJson);
 
 program
     .version(packageJson.version, '-V, --version', '输出版本号')
