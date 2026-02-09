@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { program } from "commander";
 import picocolors from "picocolors"; // 也可用chalk
 import figlet from 'figlet';
