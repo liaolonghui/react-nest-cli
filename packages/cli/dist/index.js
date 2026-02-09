@@ -6,7 +6,7 @@ import { program } from "commander";
 // packages/cli/package.json
 var package_default = {
   name: "@react-nest/cli",
-  version: "1.0.3",
+  version: "1.0.4",
   description: "\u4E00\u4E2A\u811A\u624B\u67B6\u5DE5\u5177\uFF0C\u7528\u4E8E\u5FEB\u901F\u751F\u6210 react+nest \u9879\u76EE",
   main: "index.js",
   type: "module",
@@ -42,7 +42,9 @@ var text_config_default = {
 
 // packages/cli/src/commands/base/info.ts
 var logInfo = (program2) => {
-  console.log(picocolors.yellow(figlet.textSync("React Nest CLI", text_config_default)));
+  console.log(
+    picocolors.yellow(figlet.textSync("React Nest CLI", text_config_default))
+  );
   consola.start(picocolors.yellow(program2.description()));
   consola.info(picocolors.yellow(program2.version()));
 };
@@ -55,7 +57,9 @@ import consola2 from "consola";
 import figlet2 from "figlet";
 function version(program2) {
   program2.command("version").description("\u8F93\u51FA\u7248\u672C\u53F7").action(() => {
-    consola2.info(figlet2.textSync(`version ==> ${program2.version()}`, text_config_default));
+    consola2.info(
+      figlet2.textSync(`version ==> ${program2.version()}`, text_config_default)
+    );
   });
 }
 
@@ -119,9 +123,12 @@ function init(program2) {
       spinner.fail(`\u{1F4A5}\u521D\u59CB\u5316\u5931\u8D25: \u9879\u76EE\u76EE\u5F55 ${projectName} \u5DF2\u5B58\u5728`);
       return;
     }
-    const res = await downloadTemplate(`github:liaolonghui/react-nest-cli/packages/templates/${template}#main`, {
-      dir: projectDir
-    });
+    const res = await downloadTemplate(
+      `github:liaolonghui/react-nest-cli/packages/templates/${template}#main`,
+      {
+        dir: projectDir
+      }
+    );
     const { dir } = res;
     spinner.succeed(`\u9879\u76EE\u521D\u59CB\u5316\u6210\u529F\uFF0C\u9879\u76EE\u76EE\u5F55\uFF1A${dir}`);
   });

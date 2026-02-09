@@ -1,6 +1,6 @@
 {
     "name": "@react-nest/cli",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "一个脚手架工具，用于快速生成 react+nest 项目",
     "main": "index.js",
     "type": "module",
