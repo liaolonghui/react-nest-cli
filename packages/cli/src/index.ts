@@ -83,7 +83,7 @@ program
             return;
         }
 
-        const res = await downloadTemplate(`github:liaolonghui/graduation-project/packages/templates/${template}#master`, {
+        const res = await downloadTemplate(`github:liaolonghui/react-nest-cli/packages/templates/${template}#main`, {
             dir: projectDir,
         });
         const { dir } = res;
