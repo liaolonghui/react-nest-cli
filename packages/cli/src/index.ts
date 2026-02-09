@@ -19,10 +19,14 @@ const logInfo = () => {
     consola.info(picocolors.yellow(program.version()))
 }
 
-const packageJsonPath = path.resolve(import.meta.dirname, '../../../package.json');
+// import.meta.dirname 指向当前文件所在目录
+// process.cwd() 指向当前工作目录 （实际运行时目录，不是当前文件所在目录）
+const cwd = process.cwd();
+const dirname = import.meta.dirname;
+const packageJsonPath = path.resolve(dirname, '../../../package.json');
 const packageJson = JSON.parse(fsExtra.readFileSync(packageJsonPath, 'utf-8'));
 
-console.log(packageJsonPath, packageJson);
+// console.log(packageJsonPath, packageJson);
 
 program
     .version(packageJson.version, '-V, --version', '输出版本号')
@@ -82,7 +86,7 @@ program
         });
         spinner.start();
 
-        const projectDir = path.resolve(import.meta.dirname, projectName);
+        const projectDir = path.resolve(cwd, projectName);
         if (fsExtra.existsSync(projectDir)) {
             spinner.fail(`💥初始化失败: 项目目录 ${projectName} 已存在`);
             return;

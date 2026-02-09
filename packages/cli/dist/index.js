@@ -34,9 +34,10 @@ var logInfo = () => {
   consola.start(picocolors.yellow(program.description()));
   consola.info(picocolors.yellow(program.version()));
 };
-var packageJsonPath = path.resolve(import.meta.dirname, "../../../package.json");
+var cwd = process.cwd();
+var dirname = import.meta.dirname;
+var packageJsonPath = path.resolve(dirname, "../../../package.json");
 var packageJson = JSON.parse(fsExtra.readFileSync(packageJsonPath, "utf-8"));
-console.log(packageJsonPath, packageJson);
 program.version(packageJson.version, "-V, --version", "\u8F93\u51FA\u7248\u672C\u53F7").helpOption("-h, --help", "\u8F93\u51FA\u5E2E\u52A9\u4FE1\u606F").description(packageJson.description).action(logInfo);
 program.command("info").description("\u8F93\u51FA\u9879\u76EE\u4FE1\u606F").action(logInfo);
 program.command("init").description("\u521D\u59CB\u5316\u9879\u76EE").argument("[project-name]", "\u9879\u76EE\u540D\u79F0").option("--template <template-name>", "\u9879\u76EE\u6A21\u677F\u540D\u79F0").action(async (projectName, rest) => {
@@ -75,7 +76,7 @@ program.command("init").description("\u521D\u59CB\u5316\u9879\u76EE").argument("
     // isEnabled: false
   });
   spinner.start();
-  const projectDir = path.resolve(import.meta.dirname, projectName);
+  const projectDir = path.resolve(cwd, projectName);
   if (fsExtra.existsSync(projectDir)) {
     spinner.fail(`\u{1F4A5}\u521D\u59CB\u5316\u5931\u8D25: \u9879\u76EE\u76EE\u5F55 ${projectName} \u5DF2\u5B58\u5728`);
     return;
