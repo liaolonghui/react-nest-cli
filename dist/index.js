@@ -34,7 +34,8 @@ var logInfo = () => {
   consola.start(picocolors.yellow(program.description()));
   consola.info(picocolors.yellow(program.version()));
 };
-program.version("1.0.0", "-V, --version", "\u8F93\u51FA\u7248\u672C\u53F7").helpOption("-h, --help", "\u8F93\u51FA\u5E2E\u52A9\u4FE1\u606F").description("\u4E00\u4E2A\u811A\u624B\u67B6\u5DE5\u5177\uFF0C\u7528\u4E8E\u5FEB\u901F\u751F\u6210 React+Nest \u9879\u76EE").action(logInfo);
+var packageJson = JSON.parse(fsExtra.readFileSync(path.resolve(import.meta.dirname, "../../../package.json"), "utf-8"));
+program.version(packageJson.version, "-V, --version", "\u8F93\u51FA\u7248\u672C\u53F7").helpOption("-h, --help", "\u8F93\u51FA\u5E2E\u52A9\u4FE1\u606F").description(packageJson.description).action(logInfo);
 program.command("info").description("\u8F93\u51FA\u9879\u76EE\u4FE1\u606F").action(logInfo);
 program.command("init").description("\u521D\u59CB\u5316\u9879\u76EE").argument("[project-name]", "\u9879\u76EE\u540D\u79F0").option("--template <template-name>", "\u9879\u76EE\u6A21\u677F\u540D\u79F0").action(async (projectName, rest) => {
   let { template } = rest || {};
