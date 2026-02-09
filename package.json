@@ -1,40 +1,84 @@
 {
-  "name": "react-nest-cli",
-  "version": "1.0.3",
-  "description": "一个脚手架工具，用于快速生成 react+nest 项目",
-  "type": "module",
-  "bin": {
-    "react-nest": "./packages/cli/dist/index.js"
-  },
-  "main": "./packages/cli/dist/index.js",
-  "scripts": {
-    "build": "tsup",
-    "start": "ts-node ./packages/cli/src/index.ts",
-    "preview": "tsup && node ./packages/cli/dist/index.js"
-  },
-  "keywords": [
-    "react",
-    "nest",
-    "脚手架"
-  ],
-  "author": "liaolonghui",
-  "license": "ISC",
-  "dependencies": {
-    "commander": "^14.0.3",
-    "consola": "^3.4.2",
-    "figlet": "^1.10.0",
-    "fs-extra": "^11.3.3",
-    "giget": "^3.1.2",
-    "ora": "^9.3.0",
-    "picocolors": "^1.1.1",
-    "prompts": "^2.4.2",
-    "tsup": "^8.5.1"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^25.2.1",
-    "@types/prompts": "^2.4.9",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
-  }
+    "name": "react-nest-cli",
+    "version": "1.0.3",
+    "description": "一个脚手架工具，用于快速生成 react+nest 项目",
+    "type": "module",
+    "packageManager": "pnpm@9.6.0",
+    "bin": {
+        "react-nest": "./packages/cli/dist/index.js"
+    },
+    "main": "./packages/cli/dist/index.js",
+    "scripts": {
+        "build": "tsup",
+        "start": "ts-node ./packages/cli/src/index.ts",
+        "preview": "tsup && node ./packages/cli/dist/index.js",
+        "commit": "git-cz",
+        "prepare": "husky",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint \"{packages,apps}/**/*.{js,jsx,ts,tsx}\"",
+        "format": "prettier --write .",
+        "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"(packages)/**/*.@(html|ts|js|tsx|jsx|css|scss|json|md)\"",
+        "graph": "madge --extensions ts --ts-config tsconfig.json packages/*/src"
+    },
+    "keywords": [
+        "react",
+        "nest",
+        "脚手架"
+    ],
+    "author": "liaolonghui",
+    "license": "ISC",
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-git"
+        }
+    },
+    "lint-staged": {
+        "*.{json|md}": [
+            "prettier --cache --write --no-error-on-unmatched-pattern"
+        ],
+        "*.{js|jsx}": [
+            "eslint --fix",
+            "prettier --cache --write --no-error-on-unmatched-pattern"
+        ],
+        "*.{ts|tsx}": [
+            "eslint --fix",
+            "prettier --cache --parser=typescript --write"
+        ]
+    },
+    "dependencies": {
+        "commander": "^14.0.3",
+        "consola": "^3.4.2",
+        "figlet": "^1.10.0",
+        "fs-extra": "^11.3.3",
+        "giget": "^3.1.2",
+        "ora": "^9.3.0",
+        "picocolors": "^1.1.1",
+        "prompts": "^2.4.2",
+        "tsup": "^8.5.1"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^20.4.1",
+        "@commitlint/config-conventional": "^20.4.1",
+        "@eslint/js": "^10.0.1",
+        "@types/fs-extra": "^11.0.4",
+        "@types/node": "^25.2.1",
+        "@types/prompts": "^2.4.9",
+        "@typescript-eslint/eslint-plugin": "^8.54.0",
+        "commitizen": "^4.3.1",
+        "cspell": "^9.6.4",
+        "cz-git": "^1.12.0",
+        "eslint": "^10.0.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.5",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "globals": "^17.3.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.7",
+        "madge": "^8.0.0",
+        "prettier": "^3.8.1",
+        "ts-node": "^10.9.2",
+        "turbo": "^2.8.3",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.54.0"
+    }
 }
