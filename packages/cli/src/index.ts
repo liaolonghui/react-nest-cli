@@ -19,12 +19,14 @@ const logInfo = () => {
     consola.info(picocolors.yellow(program.version()))
 }
 
+const packageJson = JSON.parse(fsExtra.readFileSync(path.resolve(import.meta.dirname, '../../../package.json'), 'utf-8'));
+
 
 program
-    .version("1.0.0", '-V, --version', '输出版本号')
+    .version(packageJson.version, '-V, --version', '输出版本号')
     .helpOption('-h, --help', '输出帮助信息')
     // .help((str) => '帮助信息：\n' + str)
-    .description("一个脚手架工具，用于快速生成 React+Nest 项目")
+    .description(packageJson.description)
     .action(logInfo);
 
 // 输出项目信息
