@@ -5,6 +5,7 @@ import baseRegisterCommands from './commands/baseRegisterCommands.ts'
 import info, { logInfo } from './commands/base/info.ts'
 import version from './commands/base/version.ts'
 import init from './commands/base/init.ts'
+import initComponent from './commands/base/initComponent.ts'
 
 // import.meta.dirname 指向当前文件所在目录
 // process.cwd() 指向当前工作目录 （实际运行时目录，不是当前文件所在目录）
@@ -23,7 +24,9 @@ const registerCommand = baseRegisterCommands(program)
 registerCommand(info)
 // 初始化项目命令
 registerCommand(init)
+// 初始化组件命令
+registerCommand(initComponent)
 // 输出版本号命令
 registerCommand(version)
 
-program.parse()
+program.parse(process.argv)

@@ -1,6 +1,6 @@
 {
     "name": "react-nest-cli",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "一个脚手架工具，用于快速生成 react+nest 项目",
     "type": "module",
     "packageManager": "pnpm@9.6.0",
@@ -15,9 +15,10 @@
         "commit": "git-cz",
         "prepare": "husky",
         "typecheck": "tsc --noEmit",
-        "lint": "eslint \"{packages,apps}/**/*.{js,jsx,ts,tsx}\"",
+        "lint:es": "eslint \"{packages,apps}/**/*.{js,jsx,ts,tsx}\"",
+        "lint:style": "stylelint \"{packages,apps}/**/*.{css,scss}\"",
         "format": "prettier --write .",
-        "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"(packages)/**/*.@(html|ts|js|tsx|jsx|css|scss|json|md)\"",
+        "spellcheck": "cspell lint --dot --gitignore --color --cache --show-suggestions \"(packages|apps)/**/*.@(html|ts|js|tsx|jsx|css|scss|json|md)\"",
         "graph": "madge --extensions ts --ts-config tsconfig.json packages/*/src"
     },
     "keywords": [
@@ -75,7 +76,10 @@
         "husky": "^9.1.7",
         "lint-staged": "^16.2.7",
         "madge": "^8.0.0",
+        "postcss-styled-syntax": "^0.7.1",
         "prettier": "^3.8.1",
+        "stylelint": "^17.1.1",
+        "stylelint-config-standard": "^40.0.0",
         "ts-node": "^10.9.2",
         "turbo": "^2.8.3",
         "typescript": "^5.9.3",

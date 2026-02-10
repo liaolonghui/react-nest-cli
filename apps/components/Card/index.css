@@ -1,0 +1,10 @@
+.card {
+    padding: 16px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.card .title {
+    font-size: 16px;
+    font-weight: bold;
+}

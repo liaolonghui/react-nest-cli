@@ -12,5 +12,5 @@ export default defineConfig({
         },
     ],
     dictionaries: ['project-words'],
-    ignorePaths: ['node_modules', './.cspell/project-words.txt'],
+    ignorePaths: ['node_modules', './.cspell/project-words.txt', 'dist'],
 })

@@ -69,6 +69,5 @@ export default function init(program: Command) {
             )
             const { dir } = res
             spinner.succeed(`项目初始化成功，项目目录：${dir}`)
-            // console.log(res);
         })
 }
